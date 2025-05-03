@@ -157,7 +157,7 @@ if achievement:
         st.write("Almost there! Keep pushing!")
 
 # Daily challenge
-st.markdown('<h2 class="header-font">🚀 Today's Growth Task</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="header-font">🚀 Today\'s Growth Task</h2>', unsafe_allow_html=True)
 challenges = [
     "Learn something new outside your comfort zone",
     "Help someone else with their challenge",
