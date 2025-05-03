@@ -1,210 +1,99 @@
 import streamlit as st
 import random
 
-# Set ultra-premium page config
+# ✅ 1. PAGE SETUP (WARRIOR THEME)
 st.set_page_config(
-    page_title="GROWTH MINDSET PRO", 
-    page_icon="🔥", 
+    page_title="GROWTH WARRIOR MODE", 
+    page_icon="⚔️", 
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# Vibrant CSS styling
+# ✅ 2. ULTRA-VISIBLE CSS (HEADINGS = GOLD, TEXT = WHITE)
 st.markdown("""
 <style>
+    /* BACKGROUND */
     [data-testid=stAppViewContainer] {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        color: white;
-        font-family: 'Montserrat', sans-serif;
+        background: linear-gradient(135deg, #0F0C29 0%, #1A1A2E 100%);
     }
+
+    /* HEADINGS (NOW GOLD INSTEAD OF WHITE) */
     h1, h2, h3, h4, h5, h6 {
-        color: #fca311 !important;
+        color: #FFD700 !important;  /* GOLD COLOR */
         font-family: 'Poppins', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
-    .quote-card {
-        background: rgba(255,255,255,0.1);
-        border-left: 4px solid #fca311;
-        padding: 1.5rem;
-        border-radius: 0 8px 8px 0;
-        margin: 1rem 0;
+
+    /* BODY TEXT (SOFT WHITE) */
+    p, .stMarkdown, .stText {
+        color: #F5F5F5 !important;
     }
-    .stButton>button {
-        background: linear-gradient(90deg, #fca311 0%, #e85d04 100%);
-        color: #000 !important;
-        font-weight: 800;
-        border: none;
-        border-radius: 30px;
-        padding: 12px 28px;
-        box-shadow: 0 4px 15px rgba(252, 163, 17, 0.3);
-    }
-    .stTextInput>div>div>input, .stTextArea>div>div>textarea {
-        background: rgba(255,255,255,0.1);
-        border: 2px solid #fca311;
-        color: white;
-        border-radius: 8px;
-        padding: 10px;
-    }
+
+    /* CARDS (GLASS EFFECT) */
     .challenge-card {
-        background: rgba(22, 33, 62, 0.8);
-        border: 1px solid #fca311;
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid #FFD700;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px 0;
+        backdrop-filter: blur(5px);
     }
-    .stProgress>div>div>div {
-        background: linear-gradient(90deg, #fca311 0%, #e85d04 100%);
-    }
-    .social-link {
-        color: #fca311 !important;
-        font-weight: 600;
-        margin: 0 10px;
-        text-decoration: none;
-    }
-    .social-link:hover {
-        color: #ffd166 !important;
-        text-decoration: underline;
+
+    /* BUTTONS (GLOWING ORANGE) */
+    .stButton>button {
+        background: linear-gradient(90deg, #FFA500 0%, #FF6347 100%);
+        color: black !important;
+        font-weight: bold;
+        border: none;
+        border-radius: 25px;
+        box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Header with striking design
+# ✅ 3. HEADER (NOW GOLD & BOLD)
 st.markdown("""
-<div style="text-align: center; padding: 2rem 0; border-bottom: 2px solid #fca311;">
-    <h1 style="font-size: 3.5rem; margin-bottom: 0.5rem;">GROWTH MINDSET PRO</h1>
-    <h2 style="color: #fff !important; font-size: 1.8rem;">Welcome to Your Evolution, Abdullah Junejo</h2>
+<div style="text-align: center; padding: 1rem; border-bottom: 2px solid #FFD700;">
+    <h1 style="font-size: 3rem;">⚔️ GROWTH WARRIOR MODE</h1>
+    <h3 style="color: #FFD700 !important;">Abdullah Junejo, Ready for Battle?</h3>
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<div style="background: rgba(252, 163, 17, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
-    <p style="font-size: 1.2rem; color: #fff; text-align: center;">
-    <strong>EMBRACE THE GRIND:</strong> Challenges are just opportunities in disguise. 
-    This elite system will transform your mindset through daily practice.
-    </p>
-</div>
-""", unsafe_allow_html=True)
-
-# Quote generator with premium design
-st.markdown("## DAILY MINDSET FUEL")
-col1, col2 = st.columns([3,1])
-with col2:
-    if st.button("GENERATE QUOTE 🔥", key="quote_button"):
-        quotes = [
-            ("\"The only limit to our realization of tomorrow is our doubts of today.\"", "Franklin D. Roosevelt"),
-            ("\"You don't have to be great to start, but you have to start to be great.\"", "Zig Ziglar"),
-            ("\"Success is stumbling from failure to failure with no loss of enthusiasm.\"", "Winston Churchill"),
-            ("\"Your potential is endless. Go do what you were created to do.\"", "Unknown"),
-            ("\"The expert in anything was once a beginner.\"", "Helen Hayes")
-        ]
-        quote, author = random.choice(quotes)
-        st.session_state.current_quote = (quote, author)
-
-with col1:
-    if 'current_quote' in st.session_state:
-        quote, author = st.session_state.current_quote
-        st.markdown(f"""
-        <div class="quote-card">
-            <p style="font-size: 1.4rem; font-style: italic; color: #fff;">{quote}</p>
-            <p style="text-align: right; font-weight: 600; color: #fca311;">— {author}</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-# Challenge section with premium design
-st.markdown("## CHALLENGE WARRIOR ZONE")
-with st.container():
-    user_input = st.text_input("DESCRIBE YOUR CURRENT BATTLE:", placeholder="What's testing you today?")
-    difficulty = st.select_slider("DIFFICULTY LEVEL:", 
-                                options=["WARMUP", "MODERATE", "TOUGH", "BRUTAL", "LEGENDARY"],
-                                value="MODERATE")
-
-    if user_input:
-        encouragement = {
-            "WARMUP": "Good warmup! Now push harder!",
-            "MODERATE": "This will stretch you nicely!",
-            "TOUGH": "Growth happens outside comfort zones!",
-            "BRUTAL": "This will forge you into something greater!",
-            "LEGENDARY": "Legendary challenges create legendary warriors!"
-        }
-        st.markdown(f"""
-        <div class="challenge-card">
-            <h4 style="color: #fca311;">YOUR CHALLENGE</h4>
-            <p style="font-size: 1.1rem; color: #fff;">{user_input}</p>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="background: #e85d04; color: white; padding: 4px 12px; border-radius: 20px; font-weight: 600;">{difficulty}</span>
-                <p style="font-style: italic; color: #fca311; margin: 0;">{encouragement[difficulty]}</p>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        st.balloons()
-
-# Reflection section
-st.markdown("## WARRIOR'S JOURNAL")
-with st.expander("RECORD TODAY'S LESSONS", expanded=False):
-    mood = st.radio("TODAY'S MINDSET:", ("🔥 ON FIRE", "💪 STRONG", "🛡️ RESILIENT", "🏆 VICTORIOUS"))
-    reflection = st.text_area("KEY INSIGHTS:", height=150, placeholder="What did the battle teach you today?")
-    
-    if reflection:
-        st.success("LESSONS ARCHIVED!")
-        st.image("https://media.giphy.com/media/l0HU7JI1nSwE6yjeU/giphy.gif", width=200)
-
-# Achievement tracker
-st.markdown("## VICTORY LOG")
-achievement = st.text_input("RECORD YOUR WIN:")
-if achievement:
+# ✅ 4. QUOTE GENERATOR (GOLD BORDER)
+st.markdown("## 💬 WARRIOR'S WISDOM")
+quote = st.button("🔥 GENERATE MOTIVATION")
+if quote:
+    quotes = [
+        ("\"The only limit is the one you set yourself.\"", "Sun Tzu"),
+        ("\"Pressure makes diamonds.\"", "George S. Patton"),
+        ("\"Suffer now and live the rest of your life as a champion.\"", "Muhammad Ali")
+    ]
+    selected_quote, author = random.choice(quotes)
     st.markdown(f"""
-    <div class="challenge-card" style="border-color: #06d6a0;">
-        <h4 style="color: #06d6a0;">🏆 VICTORY</h4>
-        <p style="font-size: 1.1rem; color: #fff;">{achievement}</p>
+    <div class="challenge-card">
+        <p style="font-size: 1.2rem; font-style: italic; color: #F5F5F5;">{selected_quote}</p>
+        <p style="text-align: right; color: #FFD700;">— {author}</p>
     </div>
     """, unsafe_allow_html=True)
-    
-    progress = st.slider("PROGRESS TO NEXT LEVEL:", 0, 100, 25)
-    st.progress(progress)
-    if progress >= 80:
-        st.balloons()
-        st.markdown("""
-        <div style="text-align: center; margin: 1rem 0;">
-            <p style="color: #fca311; font-weight: 600; font-size: 1.2rem;">
-            ALMOST THERE! PUSH THROUGH!
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
 
-# Daily challenge
-st.markdown("## TODAY'S MISSION")
-challenges = [
-    "Conquer one fear outside your comfort zone",
-    "Train a skill for 45 minutes with full intensity",
-    "Study the biography of someone who overcame great obstacles",
-    "Help another warrior with their challenge",
-    "Identify and eliminate one limiting belief"
-]
-daily_challenge = random.choice(challenges)
-st.markdown(f"""
-<div class="challenge-card" style="border-color: #118ab2;">
-    <h4 style="color: #118ab2;">⚔️ MISSION BRIEFING</h4>
-    <p style="font-size: 1.2rem; color: #fff; font-weight: 600;">{daily_challenge}</p>
-</div>
-""", unsafe_allow_html=True)
-
-if st.button("MISSION COMPLETE ✅", key="challenge_button"):
-    st.success("WARRIOR UPGRADED!")
-    st.balloons()
-    st.image("https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif", width=200)
-
-# Premium footer
-st.markdown("""
-<div style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 2px solid #fca311;">
-    <h3 style="color: #fca311 !important;">CONTINUE YOUR JOURNEY</h3>
-    <p style="color: #fff;">The warrior's path never ends - only evolves</p>
-    <div style="margin: 1.5rem 0;">
-        <a href="https://github.com/abdullahjunejo" class="social-link" target="_blank">GITHUB</a>
-        <a href="https://www.facebook.com/abdullah.junejo.737/" class="social-link" target="_blank">FACEBOOK</a>
-        <a href="https://www.instagram.com/abdullah_junejo__/" class="social-link" target="_blank">INSTAGRAM</a>
+# ✅ 5. CHALLENGE ZONE (GLOWING CARDS)
+st.markdown("## ⚡ DAILY CHALLENGE")
+challenge = st.text_input("What’s your battle today?")
+if challenge:
+    st.markdown(f"""
+    <div class="challenge-card">
+        <h4 style="color: #FFD700;">YOUR MISSION:</h4>
+        <p>{challenge}</p>
     </div>
-    <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">© 2023 WARRIOR MINDSET SYSTEMS</p>
+    """, unsafe_allow_html=True)
+    st.balloons()
+
+# ✅ 6. FOOTER (SOCIAL LINKS IN GOLD)
+st.markdown("""
+<div style="text-align: center; margin-top: 2rem; padding: 1rem; border-top: 1px solid #FFD700;">
+    <p style="color: #FFD700;">CONNECT WITH THE WARRIOR:</p>
+    <a href="https://github.com/abdullahjunejo" style="color: #FFD700 !important; margin: 0 10px;">GitHub</a>
+    <a href="https://facebook.com/abdullah.junejo.737" style="color: #FFD700 !important; margin: 0 10px;">Facebook</a>
+    <a href="https://instagram.com/abdullah_junejo__" style="color: #FFD700 !important; margin: 0 10px;">Instagram</a>
 </div>
 """, unsafe_allow_html=True)
