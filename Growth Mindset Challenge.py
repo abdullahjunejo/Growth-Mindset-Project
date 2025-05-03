@@ -4,11 +4,11 @@ import random
 # Set page config with your name
 st.set_page_config(page_title="Growth Mindset Project", page_icon="★", layout="wide")
 
-# Cool gradient background
+# Cool gradient background - changed to blue/purple gradient
 st.markdown("""
 <style>
     [data-testid=stAppViewContainer] {
-        background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+        background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
     }
     .big-font {
         font-size:30px !important;
@@ -117,5 +117,7 @@ st.markdown("### Keep growing, Abdullah Junejo!")
 st.write("Growth is a journey - enjoy every step!")
 st.markdown("""
 Connect with me:
-[Twitter](https://twitter.com) | [LinkedIn](https://linkedin.com) | [GitHub](https://github.com)
+[GitHub](https://github.com/abdullahjunejo) | 
+[Facebook](https://www.facebook.com/abdullah.junejo.737/) | 
+[Instagram](https://www.instagram.com/abdullah_junejo__/)
 """)
